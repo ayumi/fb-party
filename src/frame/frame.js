@@ -1,3 +1,5 @@
+// ES6 because it's not precompiled because I don't feel like updating build.rb
+
 console.log("In frame.js");
 
 function getQueryParam(param) {
@@ -17,5 +19,10 @@ var iframe = document.getElementById('frame-iframe');
 
 // The extension passes us the original request as a query param.
 var requestUrl = getQueryParam('q');
-var trollioUrl = "http://local.troll.io:9001?q=" + requestUrl;
+if ( requestUrl.search(/^https/) >= 0 ) {
+  var protocol = 'https';
+} else {
+  var protocol = 'http';
+}
+var trollioUrl = protocol + "://local.troll.io:9001?q=" + requestUrl;
 iframe.src = trollioUrl;
