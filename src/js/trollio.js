@@ -7,8 +7,8 @@ class Trollio {
 
     let pageHref = encodeURIComponent( location.href );
     let frameBaseUrl = chrome.extension.getURL("frame/frame.html");
-    // iframe.src = `${frameBaseUrl}?q=${pageHref}`;
-    iframe.src = frameBaseUrl;
+    iframe.src = `${frameBaseUrl}?q=${pageHref}`;
+    // iframe.src = frameBaseUrl;
 
     document.body.appendChild(iframe);
   }
