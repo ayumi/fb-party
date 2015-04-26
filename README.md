@@ -1,11 +1,31 @@
 Stuff is in ES6 so you need to run Babel on it.
 
-## Build script
+## Development
 
-```ruby
-ruby build.rb
+### Deps
+
+[Chrome Extensions Reloader](https://github.com/arikw/chrome-extensions-reloader)
+
+This is invoked by the build script.
+
+[fswatch](https://github.com/emcrisostomo/fswatch)
+
+Helps you run the build script automatically.
+
+### Autobuild
+
+Watch `src` for changes then build and reload automatically:
+
+```sh
+fswatch-run src "ruby build.rb"
 ```
 
-Outputs to `build-<the time>`
+The extension is built to `deploy/development/`.
 
-Drag it into Chrome / extensions to start using it.
+## Deploy
+
+```sh
+ruby build.rb BUILD_ENV=production
+```
+
+Builds to `deploy/build-<the time>`

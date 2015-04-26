@@ -24,16 +24,30 @@ end
 
 
 # Init
+$build_env = ENV['BUILD_ENV'] || 'development'
+puts "Build env: #{$build_env}"
+
 time_str = Time.now.strftime("%Y-%m-%d-%H-%M-%S")
-$out_path = "build-#{time_str}"
+case $build_env
+when 'development'
+  $out_path = "deploy/development"
+  FileUtils.rm_rf($out_path)
+else
+  $out_path = "deploy/build-#{time_str}"
+end
+
 puts "Output: #{$out_path}/"
 FileUtils.mkdir_p($out_path)
+
 
 # Copy over everything
 FileUtils.cp_r('src/.', $out_path)
 
 # Compile JS to ES6
 `babel #{ dest_path('js') } -o #{ dest_path('trollio-compiled.js') }`
-FileUtils.rm_f( dest_path('js') )
+FileUtils.rm_rf( dest_path('js') )
+
+# Reload extension in Chrome
+`"/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome" http://reload.extensions 2>&1 &`
 
 puts "ok"

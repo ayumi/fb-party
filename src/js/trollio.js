@@ -1,8 +1,17 @@
-// ES6 test stuff
-class Potato {
+class Trollio {
   constructor() {
-    console.log("Yup");
+    console.log("Initializing Troll.io Extension");
+
+    let iframe = document.createElement("iframe");
+    iframe.id = "trollio-frame";
+
+    let pageHref = encodeURIComponent( location.href );
+    let frameBaseUrl = chrome.extension.getURL("frame/frame.html");
+    // iframe.src = `${frameBaseUrl}?q=${pageHref}`;
+    iframe.src = frameBaseUrl;
+
+    document.body.appendChild(iframe);
   }
 }
 
-new Potato();
+var trollio = new Trollio();
