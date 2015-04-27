@@ -15,6 +15,10 @@
     "scripts": ["event-page.js"],
     "persistent": false
   },
+  "permissions": [
+    "http://*.troll.io/",
+    "https://*.troll.io/"
+  ],
   "description": "everyday i'm trolling",
   "web_accessible_resources": [
     "frame/*"

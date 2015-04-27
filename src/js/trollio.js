@@ -10,8 +10,7 @@ class Trollio {
 
     let pageHref = encodeURIComponent( location.href );
     let frameBaseUrl = chrome.extension.getURL("frame/frame.html");
-    this.iframe.src = `${frameBaseUrl}?q=${pageHref}`;
-    // iframe.src = frameBaseUrl;
+    this.iframe.src = `${frameBaseUrl}?uri=${pageHref}`;
 
     document.body.appendChild( this.iframe );
   }
@@ -39,3 +38,26 @@ function trollioActivator(request, sender, sendResponse) {
 }
 
 chrome.runtime.onMessage.addListener(trollioActivator);
+
+
+// Get Troll count
+function notifyTrollCount(count) {
+  chrome.runtime.sendMessage({ action: "update-troll-count", value: count });
+}
+
+let pageHref = encodeURIComponent( location.href );
+let baseUrl = "http://local.troll.io:9001/yuris/message_count";
+let url = `${baseUrl}?uri=${pageHref}`;
+
+var xhr = new XMLHttpRequest();
+xhr.open("GET", url, true);
+xhr.onreadystatechange = function() {
+  if (xhr.readyState == 4) {
+    var resp = JSON.parse( xhr.responseText );
+    console.log(`Troll count: ${resp.value}`)
+    notifyTrollCount( resp.value );
+  }
+}
+xhr.send();
+
+notifyTrollCount(0);

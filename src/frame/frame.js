@@ -33,7 +33,7 @@ var version = chrome.app.getDetails().version;
 setUserAgent( iframe.contentWindow, 'Troll.io Chrome/' + version );
 
 // The extension passes us the original request as a query param.
-var requestUrl = getQueryParam('q');
+var requestUrl = getQueryParam('uri');
 if ( requestUrl.search(/^https/) >= 0 ) {
   var protocol = 'https';
 } else {
