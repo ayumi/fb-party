@@ -4,9 +4,13 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: 300px;
+  width: 330px;
   height: 100%;
   z-index: 9001;
   border: none;
   border-left: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+#trollio-frame.hidden {
+  display: none;
 }
