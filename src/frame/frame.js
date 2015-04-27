@@ -24,5 +24,5 @@ if ( requestUrl.search(/^https/) >= 0 ) {
 } else {
   var protocol = 'http';
 }
-var trollioUrl = protocol + "://local.troll.io:9001?q=" + requestUrl;
+var trollioUrl = protocol + "://local.troll.io:9001?agent=chrome&q=" + requestUrl;
 iframe.src = trollioUrl;
