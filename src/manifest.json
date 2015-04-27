@@ -11,6 +11,10 @@
       "js": ["trollio-compiled.js"]
     }
   ],
+  "background": {
+    "scripts": ["event-page.js"],
+    "persistent": false
+  },
   "description": "everyday i'm trolling",
   "web_accessible_resources": [
     "frame/*"

@@ -14,4 +14,11 @@ class Trollio {
   }
 }
 
-var trollio = new Trollio();
+var trollio = null;
+
+
+function trollioActivator(request, sender, sendResponse) {
+  trollio = new Trollio();
+}
+
+chrome.runtime.onMessage.addListener(trollioActivator);
