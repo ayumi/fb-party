@@ -39,5 +39,6 @@ if ( requestUrl.search(/^https/) >= 0 ) {
 } else {
   var protocol = 'http';
 }
-var trollioUrl = protocol + "://local.troll.io:9001?agent=chrome&uri=" + requestUrl;
+// var trollioUrl = protocol + "://www.troll.io/yuris/by_uri?agent=chrome&uri=" + requestUrl;
+var trollioUrl = protocol + "://local.troll.io:9001/yuris/by_uri?agent=chrome&uri=" + requestUrl;
 iframe.src = trollioUrl;
