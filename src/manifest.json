@@ -6,7 +6,6 @@
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "exclude_matches": ["*://*.troll.io/*"],
       "css": ["trollio.css"],
       "js": ["trollio-compiled.js"]
     }
