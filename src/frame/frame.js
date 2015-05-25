@@ -1,4 +1,4 @@
-// ES6 because it's not precompiled because I don't feel like updating build.rb
+// not ES6 because it's not precompiled because I don't feel like updating build.rb
 
 console.log("In frame.js");
 
@@ -14,23 +14,10 @@ function getQueryParam(param) {
   return(null);
 }
 
-function setUserAgent(window, userAgent) {
-  if (window.navigator.userAgent != userAgent) {
-    var userAgentProp = { get: function () { return userAgent; } };
-    try {
-      Object.defineProperty(window.navigator, 'userAgent', userAgentProp);
-    } catch (e) {
-      window.navigator = Object.create(navigator, {
-          userAgent: userAgentProp
-      });
-    }
-  }
-}
-
 var iframe = document.getElementById('frame-iframe');
 
 var version = chrome.app.getDetails().version;
-setUserAgent( iframe.contentWindow, 'Troll.io Chrome/' + version );
+// setUserAgent( iframe.contentWindow, 'Troll.io Chrome/' + version );
 
 // The extension passes us the original request as a query param.
 var requestUrl = getQueryParam('uri');
