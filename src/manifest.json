@@ -16,9 +16,7 @@
   },
   "permissions": [
     "http://*.troll.io/",
-    "https://*.troll.io/",
-    "webRequest",
-    "webRequestBlocking"
+    "https://*.troll.io/"
   ],
   "description": "everyday i'm trolling",
   "web_accessible_resources": [
