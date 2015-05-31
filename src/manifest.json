@@ -18,7 +18,7 @@
     "http://*.troll.io/",
     "https://*.troll.io/"
   ],
-  "description": "everyday i'm trolling",
+  "description": "comment and share images anonymously on any webpage.",
   "web_accessible_resources": [
     "frame/*"
   ]
