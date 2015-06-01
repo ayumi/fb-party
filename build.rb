@@ -48,6 +48,8 @@ FileUtils.cp_r('src/.', $out_path)
 FileUtils.rm_rf( dest_path('js') )
 
 # Reload extension in Chrome
-`"/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome" http://reload.extensions 2>&1 &`
+if $build_env == 'development'
+  `"/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome" http://reload.extensions 2>&1 &`
+end
 
 puts "ok"
