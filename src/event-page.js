@@ -8,9 +8,9 @@ function activateTrollio() {
 chrome.browserAction.onClicked.addListener(activateTrollio);
 
 
-// Listen for Troll count
+// Troll count button -- setup listener
 function updateTrollCount(request, sender, sendResponse) {
-  console.log('event page response GET');
+  // console.log('event page response GET');
 
   var badgeObj = { text: '', tabId: sender.tab.id };
   if ( request.value > 0 ) {
@@ -18,5 +18,11 @@ function updateTrollCount(request, sender, sendResponse) {
   }
   chrome.browserAction.setBadgeText(badgeObj);
 }
-
 chrome.runtime.onMessage.addListener(updateTrollCount);
+
+// Button background color
+function setButtonColor(color) {
+  var colorObj = { color: color };
+  chrome.browserAction.setBadgeBackgroundColor(colorObj);
+}
+setButtonColor([ 219, 64, 151, 127 ]);

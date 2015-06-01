@@ -2,7 +2,16 @@
   "manifest_version": 2,
   "name": "troll.io",
   "version": "0.2.0",
-  "browser_action": {},
+  "browser_action": {
+    "default_icon": {
+      "19": "images/trollio-egg-19.png",
+      "38": "images/trollio-egg-38.png"
+    }
+  },
+  "icons": {
+    "48": "images/trollio-egg-48.png",
+    "128": "images/trollio-egg-128.png"
+  },
   "content_scripts": [
     {
       "matches": ["*://*/*"],
