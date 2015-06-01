@@ -1,6 +1,6 @@
 // not ES6 because it's not precompiled because I don't feel like updating build.rb
 
-console.log("In frame.js");
+// console.log("In frame.js");
 
 function getQueryParam(param) {
   var query = window.location.search.substring(1);
@@ -26,6 +26,6 @@ if ( requestUrl.search(/^https/) >= 0 ) {
 } else {
   var protocol = 'http';
 }
-// var trollioUrl = protocol + "://chrome.troll.io/yuris/by_uri?uri=" + requestUrl;
-var trollioUrl = protocol + "://chrome.local.troll.io:9001/yuris/by_uri?uri=" + requestUrl;
+var trollioUrl = protocol + "://chrome.troll.io/yuris/by_uri?uri=" + requestUrl;
+// var trollioUrl = protocol + "://chrome.local.troll.io:9001/yuris/by_uri?uri=" + requestUrl;
 iframe.src = trollioUrl;

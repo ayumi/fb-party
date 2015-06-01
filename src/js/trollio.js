@@ -46,8 +46,8 @@ function notifyTrollCount(count) {
 }
 
 let pageHref = encodeURIComponent( location.href );
-// let baseUrl = "https://chrome.troll.io/yuris/message_count";
-let baseUrl = "http://chrome.local.troll.io:9001/yuris/message_count";
+let baseUrl = "https://chrome.troll.io/yuris/message_count";
+// let baseUrl = "http://chrome.local.troll.io:9001/yuris/message_count";
 let url = `${baseUrl}?uri=${pageHref}`;
 
 var xhr = new XMLHttpRequest();
