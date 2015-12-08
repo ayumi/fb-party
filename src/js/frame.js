@@ -17,9 +17,6 @@ function getQueryParam(param) {
 var App = {
 
   El: {
-    emailList: document.getElementById("email-list"),
-    inviteButton: document.getElementById("invite-button"),
-    emailsPerRun: document.getElementById("emails-per-run")
   },
 
   Cfg: {
@@ -28,12 +25,17 @@ var App = {
 
   Fn: {
     init: function() {
+      App.El = {
+        emailList: document.getElementById("email-list"),
+        inviteButton: document.getElementById("invite-button"),
+        emailsPerRun: document.getElementById("emails-per-run")
+      };
+
       App.El.inviteButton.addEventListener("click", App.Fn.inviteButtonPressed);
     },
 
     inviteButtonPressed: function(event) {
       var emails = App.Fn.shiftEmails();
-      debugger;
       App.Fn.invitePeeps(emails);
     },
 
@@ -47,7 +49,7 @@ var App = {
         count = App.El.emailsPerRun.value;
       }
       for (var i = 0; i < count; i++) {
-        firstLineIndex = App.El.emailList.value.indexOf("\n");
+        newLineIndex = App.El.emailList.value.indexOf("\n");
         emailBuffer = App.El.emailList.value.substring(
           0,
           newLineIndex - 1
@@ -62,10 +64,18 @@ var App = {
     },
 
     invitePeeps: function(emails) {
+      for (var i = 0; i < emails.length; i++) {
+        App.Fn.invitePeep(emails[i]);
+      }
+    },
 
+    invitePeep: function(email) {
+      var inputBox = document.querySelector("input[placeholder='Search for people to invite'");
+      // inputBox.value = email;
+      inputBox.focus();
+      var event = document.createEvent('Event'); event.initEvent('keydown', true, true);
+      event.keyCode = 76;
     }
   }
 
 };
-
-App.Fn.init();

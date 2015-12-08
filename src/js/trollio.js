@@ -1,18 +1,39 @@
 class Trollio {
   constructor() {
-    console.log("Initializing Troll.io Extension");
 
     this.visible = true;
 
     // Insert iframe
-    this.iframe = document.createElement("iframe");
+    // this.iframe = document.createElement("iframe");
+    // this.iframe.id = "trollio-frame";
+    //
+    // let pageHref = encodeURIComponent( location.href );
+    // let frameBaseUrl = chrome.extension.getURL("frame/frame.html");
+    // this.iframe.src = `${frameBaseUrl}?uri=${pageHref}`;
+    //
+    // document.body.appendChild( this.iframe );
+
+
+    this.iframe = document.createElement("div");
     this.iframe.id = "trollio-frame";
+    this.iframe.innerHTML = `
+<div class="content">
+  <h1>fb party</h1>
+  <h2>1. Paste emails separated by line breaks.</h2>
+  <textarea id="email-list"></textarea>
 
-    let pageHref = encodeURIComponent( location.href );
-    let frameBaseUrl = chrome.extension.getURL("frame/frame.html");
-    this.iframe.src = `${frameBaseUrl}?uri=${pageHref}`;
-
+  <h2>2. Open the invite modal then push the button.</h2>
+  <div>
+    <input id="emails-per-run" type="text" value=2 />
+    peeps per press
+  </div>
+  <div>
+    <button id="invite-button">INVITE PEEPS!</button>
+  </div>
+</div>
+    `;
     document.body.appendChild( this.iframe );
+    App.Fn.init();
   }
 
   toggle() {
@@ -38,27 +59,3 @@ function trollioActivator(request, sender, sendResponse) {
 }
 
 chrome.runtime.onMessage.addListener(trollioActivator);
-
-
-// Get Troll count
-function notifyTrollCount(count) {
-  chrome.runtime.sendMessage({ action: "update-troll-count", value: count });
-}
-
-let pageHref = encodeURIComponent( location.href );
-let baseUrl = "https://chrome.troll.io/yuris/message_count";
-// let baseUrl = "http://chrome.local.troll.io:9001/yuris/message_count";
-let url = `${baseUrl}?uri=${pageHref}`;
-
-var xhr = new XMLHttpRequest();
-xhr.open("GET", url, true);
-xhr.onreadystatechange = function() {
-  if (xhr.readyState == 4) {
-    var resp = JSON.parse( xhr.responseText );
-    console.log(`Troll count: ${resp.value}`)
-    notifyTrollCount( resp.value );
-  }
-}
-xhr.send();
-
-notifyTrollCount(0);
