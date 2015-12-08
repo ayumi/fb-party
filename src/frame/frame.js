@@ -14,18 +14,58 @@ function getQueryParam(param) {
   return(null);
 }
 
-var iframe = document.getElementById('frame-iframe');
+var App = {
 
-var version = chrome.app.getDetails().version;
-// setUserAgent( iframe.contentWindow, 'Troll.io Chrome/' + version );
+  El: {
+    emailList: document.getElementById("email-list"),
+    inviteButton: document.getElementById("invite-button"),
+    emailsPerRun: document.getElementById("emails-per-run")
+  },
 
-// The extension passes us the original request as a query param.
-var requestUrl = getQueryParam('uri');
-if ( requestUrl.search(/^https/) >= 0 ) {
-  var protocol = 'https';
-} else {
-  var protocol = 'http';
-}
-var trollioUrl = protocol + "://chrome.troll.io/yuris/by_uri?uri=" + requestUrl;
-// var trollioUrl = protocol + "://chrome.local.troll.io:9001/yuris/by_uri?uri=" + requestUrl;
-iframe.src = trollioUrl;
+  Cfg: {
+
+  },
+
+  Fn: {
+    init: function() {
+      App.El.inviteButton.addEventListener("click", App.Fn.inviteButtonPressed);
+    },
+
+    inviteButtonPressed: function(event) {
+      var emails = App.Fn.shiftEmails();
+      debugger;
+      App.Fn.invitePeeps(emails);
+    },
+
+    shiftEmails: function(count) {
+      var
+        emails = [],
+        emailBuffer,
+        newLineIndex;
+      var firstLineIndex
+      if (!count) {
+        count = App.El.emailsPerRun.value;
+      }
+      for (var i = 0; i < count; i++) {
+        firstLineIndex = App.El.emailList.value.indexOf("\n");
+        emailBuffer = App.El.emailList.value.substring(
+          0,
+          newLineIndex - 1
+        );
+        emails.push(emailBuffer);
+        App.El.emailList.value = App.El.emailList.value.substring(
+          newLineIndex + 1,
+          App.El.emailList.value.length
+        );
+      }
+      return emails;
+    },
+
+    invitePeeps: function(emails) {
+
+    }
+  }
+
+};
+
+App.Fn.init();

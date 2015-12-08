@@ -1,4 +1,4 @@
-html, body, iframe {
+html, body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -9,6 +9,7 @@ body {
   background: white;
 }
 
-iframe {
-  border: none;
+#email-list {
+  width: 100%;
+  height: 250px;
 }

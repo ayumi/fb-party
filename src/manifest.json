@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "troll.io",
-  "version": "0.2.3",
+  "name": "fb party",
+  "version": "0.1.0",
   "browser_action": {
     "default_icon": {
       "19": "images/trollio-egg-19.png",
@@ -14,7 +14,10 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*/*"],
+      "matches": [
+        "https://facebook.com/*",
+        "https://www.facebook.com/*"
+      ],
       "css": ["trollio.css"],
       "js": ["trollio-compiled.js"]
     }
@@ -24,10 +27,10 @@
     "persistent": false
   },
   "permissions": [
-    "http://*.troll.io/",
-    "https://*.troll.io/"
+    "https://facebook.com/",
+    "https://www.facebook.com/"
   ],
-  "description": "comment and share images anonymously on any webpage.",
+  "description": "invite to fb event by email",
   "web_accessible_resources": [
     "frame/*"
   ]
