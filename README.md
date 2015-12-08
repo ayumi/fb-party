@@ -1,4 +1,13 @@
-Stuff is in ES6 so you need to run Babel on it.
+## fb-party
+
+Given an FB event and a list of emails, it invites corresponding FB peeps to the event.
+
+WIP
+
+###  Usage
+
+1. Go to a FB event.
+2. Click the browser extension button (it's a little pink ball).
 
 ## Development
 
@@ -12,7 +21,13 @@ This is invoked by the build script.
 
 Helps you run the build script automatically.
 
-### Autobuild
+### Dev extension
+
+1. `ruby build.rb`
+2. Drag deploy/development folder into Chrome.
+3. Rebuild after you make changes.
+
+## Autobuild
 
 Watch `src` for changes then build and reload automatically:
 
